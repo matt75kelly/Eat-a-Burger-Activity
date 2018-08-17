@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="" alt="Yummy Burger">
+        </div>>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>Eat A Burger!!!</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 burgersToEat">
+            {{#each burgersNotEaten}}
+                {{>burgers/burger-block}}
+            {{/each}}
+        </div>
+        <div class="col-sm-6 burgersEaten">
+            {{#each burgersEaten}}
+                {{>burgers/burger-eaten-block}}
+            {{/each}}
+        </div>
+    </div>
+</div>
