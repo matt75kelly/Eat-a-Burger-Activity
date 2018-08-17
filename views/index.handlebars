@@ -11,13 +11,17 @@
     </div>
     <div class="row">
         <div class="col-sm-6 burgersToEat">
-            {{#each burgersNotEaten}}
+            {{#each burgers}}
+            {{#unless is_eaten}}
                 {{>burgers/burger-block}}
+            {{/unless}}
             {{/each}}
         </div>
         <div class="col-sm-6 burgersEaten">
-            {{#each burgersEaten}}
+            {{#each burgers}}
+            {{#if is_eaten}}
                 {{>burgers/burger-eaten-block}}
+            {{/if}}
             {{/each}}
         </div>
     </div>

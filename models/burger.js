@@ -29,13 +29,21 @@ let Burger = {
         });
     },
     listAll: cb=>{
-        let cols = "id, burger_name, burger_patty, patty_count, topping_name";
-        let joinCondition = {
-            id: burger_id
-        };
         let orderCondition = "created_at DESC";
-        orm.findAll("burger", "toppings", cols, joinCondition, orderCondition, res=>{
-            cb(res);
+        orm.findAll("burger", orderCondition, res=>{
+            orm.findAll("toppings", orderCondition, results=>{
+                let data = [];
+                for(let i = 0; i<res.length; i++){
+                    data.push(res[i]);
+                    data[i].topping_list = [];
+                    for(let j = 0; j < results.length; j++){
+                        if(results[j].burger_id == res[i].id){
+                            data[i].topping_list.push(results[j].topping_name);
+                        }
+                    }
+                }
+                cb(res);
+            });
         });
     },
     removeBurger: (burger, cb)=>{

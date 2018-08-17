@@ -8,17 +8,8 @@ router.get("/", (req, res)=>{
     Burger.listAll(data=>{
        // Structure this data for handlebars 
         let hbsObject = {
-        burgersEaten : [],
-        burgersNotEaten : []
+            burgers: data
         };
-        for(let i = 0; i < data.length; i++){
-            if(burgers[i].is_eaten == false){
-                hbjObject.burgersNotEaten.push(data[i]);
-            }
-            else {
-                hbsObject.burgersEaten.push(data[i]);
-            }
-        }
         // Render this data with handlebars
         res.render("index", hbsObject); 
     }); 
