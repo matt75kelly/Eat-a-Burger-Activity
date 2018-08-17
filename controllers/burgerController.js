@@ -31,7 +31,7 @@ router.post("/api/burgers", (req, res)=>{
         patty_count: req.body.pattyCount || 1,
     };
     // Add new Burger to the Database burger table
-    Burger.addBurger(newBurger, data=>{
+    Burger.addBurger([newBurger], data=>{
         // Pull the Database ID# of the Burger we just created
         Burger.fetchBurgerId(data.burger_name, result=>{
            let topping_list = [];
@@ -49,16 +49,15 @@ router.post("/api/burgers", (req, res)=>{
                 res.json(newBurger);
             });
              
-        });
-
-        
-    });
-    
+        });   
+    });   
 });
 
 router.put("/api/burgers/:id", (req, res)=>{
-    let condition = `id = ${req.params.id}`;
-    let eaten ={
+    let condition = {
+        id: req.params.id
+    };
+    let eat = {
         is_eaten: true
     };
     Burger.eatBurger(eat, condition, result=>{
@@ -104,7 +103,13 @@ router.put("/api/burgers/:id", (req, res)=>{
           if(result.changedRows ==  0){
               return res.status(404).end();
           } else {
-              res.status(200).end();
+              let topping = {
+                  burger_id: req.params.id
+              };
+              Burger.removeToppings(topping, results=>{
+                  res.status(200).end();
+              })
+              
           }
       });
   });

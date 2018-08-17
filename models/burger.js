@@ -20,10 +20,11 @@ let Burger = {
     },
     fetchBurgerId: (burgerName, cb)=>{
         let cols = "id";
-        condition = {
+        whereCondition = {
             burger_name : burgerName
         };
-        orm.findOne("burger", cols, condition, res=>{
+        let orderCondition = "created_at DESC";
+        orm.findOne("burger", cols, whereCondition, orderCondition, res=>{
             cb(res);
         });
     },
@@ -32,7 +33,7 @@ let Burger = {
         let joinCondition = {
             id: burger_id
         };
-        let orderCondition = "created_at";
+        let orderCondition = "created_at DESC";
         orm.findAll("burger", "toppings", cols, joinCondition, orderCondition, res=>{
             cb(res);
         });
