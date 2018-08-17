@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS EatBurger_db;
+
+USE EatBurger_db;
+
+CREATE TABLE IF NOT EXISTS burger(
+    id INTEGER(4) NOT NULL AUTO_INCREMENT,
+    burger_name VARCHAR(255) NOT NULL,
+    burger_patty VARCHAR(255) NOT NULL,
+    patty_count INTEGER(1) NOT NULL DEFAULT 1,
+    is_eaten BOOLEAN NOT NULL DEFAULT false,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS toppings(
+    burger_id INTEGER(4) NOT NULL,
+    topping_name VARCHAR(255) NOT NULL
+);
