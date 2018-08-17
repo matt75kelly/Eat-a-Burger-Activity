@@ -45,18 +45,14 @@ let orm ={
             }
         });
     },
-    // table1 & table 2: tables to join together and search through
-    // cols: string of the columns from both tables we are pulling 
-    // joinCondition: object that will specify what we will join the tables ON
+    // table1: tables to search through
     // orderCondition: string to specify the column to order by and how to order
     // cb: callback function
-    findAll: (table1, table2, cols, joinCondition, orderCondition, cb)=>{
-        let sql = `SELECT ${cols} `;
-        sql += `FROM ${table1} JOIN ${table2} `;
-        sql += `ON ? `;
+    findAll: (table1, orderCondition, cb)=>{
+        let sql = `SELECT * FROM ${table1}`
         sql += `ORDER BY ?`;
 
-        connection.query(sql, joinCondition, orderCondition, (err, res)=>{
+        connection.query(sql, orderCondition, (err, res)=>{
             if(err){
                 console.log(`Find All: ${err}`);
             } else{

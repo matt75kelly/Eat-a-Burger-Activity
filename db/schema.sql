@@ -9,10 +9,12 @@ CREATE TABLE IF NOT EXISTS burger(
     patty_count INTEGER(1) NOT NULL DEFAULT 1,
     is_eaten BOOLEAN NOT NULL DEFAULT false,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NULL,
     PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS toppings(
     burger_id INTEGER(4) NOT NULL,
-    topping_name VARCHAR(255) NOT NULL
+    topping_name VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
