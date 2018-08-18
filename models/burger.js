@@ -23,13 +23,13 @@ let Burger = {
         whereCondition = {
             burger_name : burgerName
         };
-        let orderCondition = "created_at DESC";
+        let orderCondition = "created_at";
         orm.findOne("burger", cols, whereCondition, orderCondition, res=>{
             cb(res);
         });
     },
     listAll: cb=>{
-        let orderCondition = "created_at DESC";
+        let orderCondition = "created_at";
         orm.findAll("burger", orderCondition, res=>{
             orm.findAll("toppings", orderCondition, results=>{
                 let data = [];
@@ -38,7 +38,7 @@ let Burger = {
                     data[i].topping_list = [];
                     for(let j = 0; j < results.length; j++){
                         if(results[j].burger_id == res[i].id){
-                            data[i].topping_list.push(results[j].topping_name);
+                            data[i].topping_list.push(` ${results[j].topping_name}`);
                         }
                     }
                 }
