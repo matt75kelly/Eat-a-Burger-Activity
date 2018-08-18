@@ -1,20 +1,11 @@
 const connection = require("./connection");
 
-function arrayObjectHelper(array){
-    string =``;
-    for(let i = 0; i < array.length; i++){
-        let newitem = "(";
-        newitem += `${array[i].burger_name}, ` || "";
-        newitem += `${array[i].burger_patty}, ` || "";
-        newitem += `${array[i].patty_count}` || "";
-        newitem += `${array[i].burger_id}, ` || "";
-        newitem += `${array[i].topping_name}` || "";
-        newitem = "), ";
-        string += newitem;
+function arrayObjectHelper(object){
+    array = [];
+    for(let key in object){
+        array.push(object[key]);
     }
-    string.substr(0, string.length - 2);
-    console.log(string);
-    return string;
+    return array.join(", ");
 }
 let orm ={
     // table 1: which table in the database to add a row to
@@ -22,9 +13,9 @@ let orm ={
     // values: an array of literal values for the column headings
     // cb: callback function
     createRow: (table1, cols, values, cb)=>{
-        let sql = `INSERT INTO ${table1} (${cols.toString()})`;
-        sql = `VALUES ?`;
-        connection.query(sql, arrayObjectHelper(values), (err, res)=>{
+        let sql = "INSERT INTO ?? (?) ";
+        sql += "VALUES (?)";
+        connection.query(sql, [table1, cols, arrayObjectHelper(values)], (err, res)=>{
             if(err){
                 console.log(`Row Creation: ${err}`);
             } else{
@@ -36,8 +27,8 @@ let orm ={
     // whereCondition: object of key: value pairs which will identify the rows to delete
     //cb: callback function
     delete: (table1, whereCondition, cb)=>{
-        let sql = `DELETE FROM ${table1} WHERE ?`;
-        connection.query(sql, whereCondition, (err, res)=>{
+        let sql = "DELETE FROM ?? WHERE ?";
+        connection.query(sql, [table1, whereCondition], (err, res)=>{
             if(err){
                 console.log(`Deletion: ${err}`);
             } else{
@@ -49,10 +40,10 @@ let orm ={
     // orderCondition: string to specify the column to order by and how to order
     // cb: callback function
     findAll: (table1, orderCondition, cb)=>{
-        let sql = `SELECT * FROM ${table1}`
-        sql += `ORDER BY ?`;
+        let sql = "SELECT * FROM ??";
+        // sql += "ORDER BY ??.?";
 
-        connection.query(sql, orderCondition, (err, res)=>{
+        connection.query(sql, [table1], (err, res)=>{
             if(err){
                 console.log(`Find All: ${err}`);
             } else{
@@ -66,10 +57,10 @@ let orm ={
     // orderCondition: string to specify the column to order by and how to order
     // cb: callback function
     findOne: (table1, cols, whereCondition, orderCondition, cb)=>{
-        let sql = `SELECT ${cols} FROM ${table1} `;
-        sql += `WHERE ? ORDER BY ?`;
+        let sql = "SELECT ? FROM ?? ";
+        sql += "WHERE ?";
 
-        connection.query(sql, whereCondition, orderCondition, (err, res)=>{
+        connection.query(sql, [cols, table1, whereCondition], (err, res)=>{
             if(err){
                 console.log(`Find One: ${err}`);
             } else{
@@ -82,10 +73,10 @@ let orm ={
     // whereCondition: object with key: value pairs specifying the rows we want the changes to be made in
     // cv: callback function
     updateRow: (table1, setCondition, whereCondition, cb)=>{
-        let sql = `UPDATE ${table1} `;
-        sql += `SET ? WHERE ?`;
+        let sql = "UPDATE ?? ";
+        sql += "SET ? WHERE ?";
 
-        connection.query(sql, setCondition, whereCondition, (err, res)=>{
+        connection.query(sql, [table1, setCondition, whereCondition], (err, res)=>{
             if(err){
                 console.log(`Update Row: ${err}`);
             } else{

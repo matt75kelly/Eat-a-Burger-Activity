@@ -1,11 +1,20 @@
-<ul>
-    <li>{{id}}) Burger Name: {{burger_name}}</li>
-    <li>Toppings:
-        <ul>
-        {{#each toppings}}
-            <li>{{topping_name}}</li>
-        {{/each}}
-        </ul>
-    </li>
-    <li>Burger Made: {{created_at}}</li>
-</ul>
+<div class="card">
+    <div class="card-header" id="heading{{@index}}">
+        <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{@index}}" aria-expanded="false" aria-controls="collapse{{@index}}">
+            {{id}} ) {{burger_name}}
+        </button>
+        <button class="btn btn-danger eat float-right" data-eatId="{{@index}}">Eat</button>
+        </h5>
+    </div>
+
+    <div id="collapse{{@index}}" class="collapse" aria-labelledby="heading{{@index}}" data-parent="#accordionBurgersMade">
+        <div class="card-body">
+            <ul>
+            <li>Patty: {{patty_count}} x {{burger_patty}}</li>
+            <li>Toppings:{{topping_list}}</li>
+            <li>Burger Made: {{created_at}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

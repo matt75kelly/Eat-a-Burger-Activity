@@ -11,6 +11,8 @@ router.get("/", (req, res)=>{
             burgers: data
         };
         // Render this data with handlebars
+        // console.log(hbsObject);
+        // console.log(hbsObject.burgers[1].topping_list);
         res.render("index", hbsObject); 
     }); 
 });
@@ -25,15 +27,9 @@ router.post("/api/burgers", (req, res)=>{
     Burger.addBurger([newBurger], data=>{
         // Pull the Database ID# of the Burger we just created
         Burger.fetchBurgerId(data.burger_name, result=>{
-           let topping_list = [];
-            for(let i = 0; i < req.body.toppings.length; i++){
-                topping_list[i] = {
-                    burger_id: result.id,
-                    topping_name: req.body.toppings[i]
-                }
-            }
+
             // Add our toppings to our Database toppings table
-            Burger.addToppings(topping_list, results=>{
+            Burger.addToppings(req.body.topping_list, results=>{
                 // Refresh the webpage
                 newBurger.toppings = results;
                 console.log(newBurger);
@@ -104,3 +100,5 @@ router.put("/api/burgers/:id", (req, res)=>{
           }
       });
   });
+
+  module.exports = router;
