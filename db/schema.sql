@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS EatBurger_db;
 
 USE EatBurger_db;
 
+DROP TABLE IF EXISTS burger;
 CREATE TABLE IF NOT EXISTS burger(
     id INTEGER(4) NOT NULL AUTO_INCREMENT,
     burger_name VARCHAR(255) NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE IF NOT EXISTS burger(
     PRIMARY KEY(id)
 );
 
+DROP TABLE IF EXISTS toppings;
 CREATE TABLE IF NOT EXISTS toppings(
     burger_id INTEGER(4) NOT NULL,
     topping_name VARCHAR(255) NOT NULL,

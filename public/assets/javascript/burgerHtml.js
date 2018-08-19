@@ -25,18 +25,15 @@ $(document).ready(function(){
             data: newBurger
         }).catch(err=>{
             console.log(`Burger Creation: ${err}`);
-        }).then(function(error, results){
-            if(error){
-                console.log(`Burger Creation Error: ${error}`);
-            } else{
-                // location.reload();
-            }
+        }).then(function(results){
+            location.reload();
         })
     });
 
     $(".eat").on("click", function(){
         event.preventDefault();
-        let burgerId = $(this).data("eatId");
+        let burgerId = $(this).attr("data-eatid");
+        console.log(`Eat ID: ${burgerId}`);
         $.ajax({
             url: `/api/burgers/${burgerId}`,
             method: "PUT",
@@ -49,7 +46,7 @@ $(document).ready(function(){
 
     $('.delete').on("click", function(){
         event.preventDefault();
-        let burgerId = $(this).data("deleteId");
+        let burgerId = $(this).attr("data-deleteid");
         $.ajax({
             url: `/api/burgers/${burgerId}`,
             method: "DELETE"
