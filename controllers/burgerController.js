@@ -20,19 +20,16 @@ router.get("/", (req, res)=>{
 router.post("/api/burgers", (req, res)=>{
     let newBurger = {
         burger_name: req.body.burgerName,
-        burger_patty: req.body.pattyType,
-        patty_count: req.body.pattyCount || 1,
+        burger_patty: req.body.burgerPatty,
+        patty_count: Number(req.body.pattyCount)
     };
     // Add new Burger to the Database burger table
-    Burger.addBurger([newBurger], data=>{
+    Burger.addBurger(newBurger, data=>{
         // Pull the Database ID# of the Burger we just created
-        Burger.fetchBurgerId(data.burger_name, result=>{
-
+        Burger.fetchBurgerId(newBurger.burger_name, result=>{
             // Add our toppings to our Database toppings table
-            Burger.addToppings(req.body.topping_list, results=>{
+            Burger.addToppings(result, req.body.topping_list, results=>{
                 // Refresh the webpage
-                newBurger.toppings = results;
-                console.log(newBurger);
                 res.json(newBurger);
             });
              
@@ -73,12 +70,7 @@ router.put("/api/burgers/:id", (req, res)=>{
           topping_name: req.body.topping
       };  
       Burger.removeTopping(topping, result=>{
-        if (result.changedRows == 0) {
-          // If no rows were changed, then the ID must not exist, so 404
-          return res.status(404).end();
-        } else {
-          res.status(200).end();
-        }
+        res.status(200);
       });
   });
 

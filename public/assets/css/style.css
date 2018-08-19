@@ -1,0 +1,29 @@
+body{
+    background-color: #EF7B2D;
+}
+
+.topping_group{
+    align-content: center;
+    text-align: center;
+    margin: 1vh auto;
+}
+.form-check{
+    margin: 1vh 1vw;
+    font-size: 1rem;
+}
+.form-group{
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+img{
+    display: block;
+    align-content: center;
+    text-align: center;
+    height: 350px;
+    width: 350px;
+    margin: 1vh auto;
+}
+.form-check-label{
+    font-size: 1.4rem;
+}

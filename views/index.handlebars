@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 justify-content-center">
-            <img src="" alt="Yummy Burger">
+            <img src="https://www.tasteofhome.com/wp-content/uploads/2017/10/exps28800_UG143377D12_18_1b_RMS-696x696.jpg" alt="Yummy Burger">
         </div>
     </div>
     <div class="row">
@@ -20,13 +20,13 @@
             </div>
         </div>
         <div class="col-sm-6 burgersEaten">
-            <ul class="eaten">
+            <div class="accordion" id="accordionBurgersMade">
             {{#each burgers}}
             {{#if is_eaten}}
                 {{>burgers/burger-eaten-block}}
             {{/if}}
             {{/each}}
-            </ul>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -56,74 +56,82 @@
                     <option>3</option>
                     </select>
                 </div>
-                <h3 class="text-center">Toppings</h3>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Lettuce" value="1">
-                    <label class="form-check-label" for="Lettuce">Lettuce</label>
+                <h2 class="text-center">Toppings</h2>
+                <div class="topping_group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Lettuce" value="1">
+                        <label class="form-check-label" for="Lettuce">Lettuce</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Tomato" value="2">
+                        <label class="form-check-label" for="Tomato">Tomato</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Onions" value="3">
+                        <label class="form-check-label" for="Onions">Onions</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Peppers" value="4">
+                        <label class="form-check-label" for="Peppers">Peppers</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Mushrooms" value="5">
+                        <label class="form-check-label" for="topping5">Mushrooms</label>
+                    </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Tomato" value="2">
-                    <label class="form-check-label" for="Tomato">Tomato</label>
+                <h2 class="text-center">Cheeses</h2>
+                <div class="topping_group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="American Cheese" value="6">
+                        <label class="form-check-label" for="American Cheese">American</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="Cheddar Cheese" value="7">
+                        <label class="form-check-label" for="Cheddar Cheese">Cheddar</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="PepperJack Cheese" value="8">
+                        <label class="form-check-label" for="PepperJack Cheese">PepperJack</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="Provolone Cheese" value="9">
+                        <label class="form-check-label" for="Provolone Cheese">Provolone</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="Swiss Cheese" value="10">
+                        <label class="form-check-label" for="Swiss Cheese">Swiss</label>
+                    </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Onions" value="3">
-                    <label class="form-check-label" for="Onions">Onions</label>
+                <h2 class="text-center">Sauces</h2>
+                <div class="topping_group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="A1 Steak Sauce" value="11">
+                        <label class="form-check-label" for="A1 Steak Sauce">A1 Steak Sauce</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="BBQ Sauce" value="12">
+                        <label class="form-check-label" for="BBQ Sauce">BBQ Sauce</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Ketchup" value="13">
+                        <label class="form-check-label" for="Ketchup">Ketchup</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Mustard" value="14">
+                        <label class="form-check-label" for="Mustard">Mustard</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Mayonaise" value="15">
+                        <label class="form-check-label" for="Mayonaise">Mayonaise</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input toppings" type="checkbox" id="Ranch" value="16">
+                        <label class="form-check-label" for="Ranch">Ranch</label>
+                    </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Peppers" value="4">
-                    <label class="form-check-label" for="Peppers">Peppers</label>
+                <div class="topping_group">
+                    <button type="submit" class="btn btn-primary submit">Submit</button>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Mushrooms" value="5">
-                    <label class="form-check-label" for="topping5">Mushrooms</label>
-                </div>
-                <h3 class="text-center">Cheeses</h3>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="American Cheese" value="6">
-                    <label class="form-check-label" for="American Cheese">American</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="Cheddar Cheese" value="7">
-                    <label class="form-check-label" for="Cheddar Cheese">Cheddar</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="PepperJack Cheese" value="8">
-                    <label class="form-check-label" for="PepperJack Cheese">PepperJack</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="Provolone Cheese" value="9">
-                    <label class="form-check-label" for="Provolone Cheese">Provolone</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="radio" name="inlineRadioOptions" id="Swiss Cheese" value="10">
-                    <label class="form-check-label" for="Swiss Cheese">Swiss</label>
-                </div>
-                <h3 class="text-center">Sauces</h3>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="A1 Steak Sauce" value="11">
-                    <label class="form-check-label" for="A1 Steak Sauce">A1 Steak Sauce</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="BBQ Sauce" value="12">
-                    <label class="form-check-label" for="BBQ Sauce">BBQ Sauce</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Ketchup" value="13">
-                    <label class="form-check-label" for="Ketchup">Ketchup</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Mustard" value="14">
-                    <label class="form-check-label" for="Mustard">Mustard</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Mayonaise" value="15">
-                    <label class="form-check-label" for="Mayonaise">Mayonaise</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input toppings" type="checkbox" id="Ranch" value="16">
-                    <label class="form-check-label" for="Ranch">Ranch</label>
-                </div>
-                <button type="submit" class="btn btn-primary submit">Submit</button>
             </form>
         </div>
     </div>
